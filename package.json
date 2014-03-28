@@ -2,6 +2,11 @@
   "name": "bluecat",
   "version": "0.0.1",
   "description": "REST API test framework in nodejs",
+  "repository": {
+    "type" : "git",
+    "url"  : "https://github.com/chenchaoyi/bluecat"
+  },
+  "keywords": ["testing", "api", "REST", "bdd", "bluecat"],
   "dependencies": {
     "grunt-cli": "0.1.13",
     "mocha": "~1.18.2",
