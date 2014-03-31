@@ -1,10 +1,13 @@
-bluecat
+Bluecat
 =======
 
 A REST API testing framework built on node.js that makes testing API endpoints straightforward.
 
 Just define your APIs in a json file, Bluecat will create all the methods for you, plus it removes callbacks so tests that have a complex API call flow will be more clear.
 
+Bluecat give you full control over the request URL query, headers and body in test case.
+
+For HTTP API call flow, Bluecat maintains session cookies for you automatically.
 
 ## Installation ##
 * Install [Node.js >= v0.10.25 and npm](http://nodejs.org/)
@@ -63,3 +66,7 @@ describe("typeahead service", function() {
 })
 
 ```
+
+## License
+Licensed under the [MIT](http://opensource.org/licenses/MIT)
+
