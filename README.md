@@ -11,14 +11,11 @@ Just define your APIs in a json file, Bluecat will create all the methods for yo
 * Install all node package dependencies:
 
 ```bash
-$ npm install
+$ npm install bluecat
 ```
 
 ## Write Test ##
-* Define your API in config/api.json
-* Test case example (using Mocha):
-
-First define your API in config/api.json:
+* First define your API in config/api.json:
 
 ```
 {
@@ -32,7 +29,7 @@ First define your API in config/api.json:
 
 ```
 
-Then in your test suite:
+* Then in your test suite (example, using Mocha):
 
 ```javascript
 var expect = require("chai").expect;
