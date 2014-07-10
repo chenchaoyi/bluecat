@@ -1,4 +1,4 @@
-// Sample Test suite showing bluecat framework
+// Sample test suite showing bluecat framework
 
 var config = require("config");
 var expect = require("chai").expect;
