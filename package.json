@@ -10,6 +10,6 @@
   "dependencies": {
     "request": "2.27.0",
     "fibers": ">=1.0.1",
-    "hoek": ">=2.3.0"
+    "hoek": ">=2.4.1"
   }
 }
