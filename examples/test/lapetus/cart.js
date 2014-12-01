@@ -1,18 +1,17 @@
 // Sample test suite showing bluecat framework
 
-var config = require("config");
-var expect = require("chai").expect;
-var ServiceSync = require("bluecat").ServiceSync;
-var Api = require("bluecat").Api;
+var Config = require('config');
+var expect = require('chai').expect;
+var ServiceSync = require('bluecat').ServiceSync;
+var Api = require('bluecat').Api;
 
-describe("Cart -> ", function() {
+describe('Cart -> ', function() {
   before(function() {
-    //lapetus = new ServiceSync(Api("lapetus", apiPath));
-    lapetus = new ServiceSync(Api("lapetus"), config.server.host);
-    lapetus.setProxy(config.server.proxy);
+    lapetus = new ServiceSync(Api('lapetus'), Config.server.host);
+    lapetus.setProxy(Config.server.proxy);
   });
 
-  it("Create a new cart", function(done) {
+  it('Create a new cart', function(done) {
     lapetus.run(function() {
       // create new cart
       var r = lapetus.cart.POST({});
@@ -20,7 +19,7 @@ describe("Cart -> ", function() {
     });
   });
 
-  it("Create a new cart with location", function(done) {
+  it('Create a new cart with location', function(done) {
     lapetus.run(function() {
       // create new cart
       var r = lapetus.cart.POST({
@@ -32,7 +31,7 @@ describe("Cart -> ", function() {
     });
   });
 
-  it("Get cart with valid cart id", function(done) {
+  it('Get cart with valid cart id', function(done) {
     lapetus.run(function() {
       // create new cart
       var r = lapetus.cart.POST({});
@@ -40,7 +39,7 @@ describe("Cart -> ", function() {
       var cart_id = r.data.body.cart.id;
 
       // get cart
-      r = lapetus.cart["${cartid}"].GET({
+      r = lapetus.cart['${cartid}'].GET({
         params: {cartid: cart_id}
       });
       expect(r.data.statusCode).to.equal(200);
@@ -54,7 +53,6 @@ describe("Cart -> ", function() {
       done();
     });
   });
-
 
 });
 
