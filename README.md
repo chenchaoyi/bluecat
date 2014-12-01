@@ -1,5 +1,9 @@
-Bluecat
-=======
+## Bluecat
+
+[![NPM version][npm-image]][npm-url]
+[![Dependency Status][david-image]][david-url]
+[![Downloads][downloads-image]][downloads-url]
+<!-- [![Gittip][gittip-image]][gittip-url] -->
 
 A REST API testing framework built on node.js that makes testing API endpoints straightforward.
 
@@ -70,3 +74,15 @@ describe("typeahead service", function() {
 ## License
 Licensed under the [MIT](http://opensource.org/licenses/MIT)
 
+[npm-image]: https://img.shields.io/npm/v/bluecat.svg?style=flat-square
+[npm-url]: https://www.npmjs.org/package/bluecat
+[github-tag]: http://img.shields.io/github/tag/chenchaoyi/bluecat.svg?style=flat-square
+[github-url]: https://github.com/chenchaoyi/bluecat/tags
+[david-image]: http://img.shields.io/david/chenchaoyi/bluecat.svg?style=flat-square
+[david-url]: https://david-dm.org/chenchaoyi/bluecat
+[license-image]: http://img.shields.io/npm/l/bluecat.svg?style=flat-square
+[license-url]: http://opensource.org/licenses/MIT
+[downloads-image]: http://img.shields.io/npm/dm/bluecat.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/bluecat
+[gittip-image]: https://img.shields.io/gittip/chenchaoyi.svg?style=flat-square
+[gittip-url]: https://www.gittip.com/chenchaoyi/
