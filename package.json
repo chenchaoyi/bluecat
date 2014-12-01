@@ -1,7 +1,7 @@
 {
   "name": "bluecat",
-  "version": "0.1.6",
-  "description": "REST API test framework in Nodejs",
+  "version": "0.1.7",
+  "description": "Generic REST API Test Framework",
   "repository": {
     "type" : "git",
     "url"  : "https://github.com/chenchaoyi/bluecat"
