@@ -49,7 +49,6 @@ describe('Cart -> ', function() {
       expect(r.data.body.cart.itemCount).to.equal(0);
       expect(r.data.body.cart.totals).to.eql({});
       expect(r.data.body.cart.currencyCode).to.be.a('string');
-      expect(r.data.body.cart.customerId).to.be.a('string');
       done();
     });
   });

@@ -1,9 +1,9 @@
 {
-  "name": "nodeauto",
+  "name": "bluecatExample",
   "version": "0.0.1",
-  "description": "bluecat example",
+  "description": "Show case for Bluecat",
   "dependencies": {
-    "bluecat": "0.1.6",
+    "bluecat": "0.1.8",
     "chai": "~1.10.0",
     "config": "^1.8.1",
     "mocha": "~2.0.1"
