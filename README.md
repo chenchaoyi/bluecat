@@ -63,7 +63,7 @@ describe('typeahead service', function() {
       // verify response
       expect(r.err).to.equal(null);
       expect(r.data.statusCode).to.equal(200);
-      expect(r.data.body).to.have.ownProperty("specific");
+      expect(r.data.body).to.have.ownProperty('specific');
       done();
     })
   })
