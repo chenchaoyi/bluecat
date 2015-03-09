@@ -21,7 +21,7 @@ For HTTP API call flow, Bluecat maintains session cookies for you automatically.
 $ npm install bluecat
 ```
 
-## Simple Usage ##
+## Simple Sample Usage ##
 * First define your API in config/api.json:
 
 ```
@@ -43,12 +43,10 @@ var expect = require('chai').expect;
 var ServiceSync = require('bluecat').ServiceSync;
 var Api = require('bluecat').Api;
 
-var host = 'mobile.walmart.com';
-
 describe('typeahead service', function() {
 
   before(function() {
-    t = new ServiceSync(Api('mobileapi'), host);
+    t = new ServiceSync(Api('mobileapi'), 'mobile.walmart.com');
   })
 
   it('typeahead?term=xbo&cat=0&num=8', function(done) {
