@@ -39,23 +39,6 @@ module.exports = function(grunt) {
 
   });
 
-  // Get proxy grunt option
-  var proxy = '';
-  if(grunt.option('proxy') === true) {
-    proxy = '_proxy';
-  } else {
-    proxy = '';
-  }
-
-  // Get smoke grunt option
-  var smoke = '';
-  if(grunt.option('smoke') === true) {
-    smoke = '_smoke';
-  } else {
-    smoke = '';
-  }
-  // console.log(grunt.option.flags());
-
   // Load plugin(s)
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-jscs');
