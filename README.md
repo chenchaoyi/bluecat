@@ -5,18 +5,15 @@
 [![Downloads][downloads-image]][downloads-url]
 <!-- [![Gittip][gittip-image]][gittip-url] -->
 
+
 A REST API testing framework built on node.js that makes testing API endpoints straightforward.
 
-Just define your APIs in a json file, Bluecat will create all the methods for you, plus it removes callbacks so tests that have a complex API call flow will be more clear.
-
-Bluecat give you full control over the request URL query, headers and body in test case.
-
-For HTTP API call flow, Bluecat maintains session cookies for you automatically.
+* Define your APIs in a json file, Bluecat will create all the methods for you
+* Callbacks are removed so tests that have a complex API call flow will be more clear
+* Full control over the request URL query, headers and body in test case
+* Automatically maintains session cookies for you for HTTP API call flows
 
 ## Installation ##
-* Install [Node.js >= v0.10.25 and npm](http://nodejs.org/)
-* Install all node package dependencies:
-
 ```bash
 $ npm install bluecat
 ```
@@ -40,18 +37,18 @@ $ npm install bluecat
 
 ```javascript
 var expect = require('chai').expect;
-var ServiceSync = require('bluecat').ServiceSync;
-var Api = require('bluecat').Api;
+var Bluecat = require('bluecat');
+var Api = Bluecat.Api('mobileapi');
 
-describe('typeahead service', function() {
+describe('typeahead service test suite', function() {
 
   before(function() {
-    t = new ServiceSync(Api('mobileapi'), 'mobile.walmart.com');
+    t = new Bluecat.ServiceSync(Api, 'mobile.walmart.com');
   })
 
-  it('typeahead?term=xbo&cat=0&num=8', function(done) {
+  it('typeahead?term=toy&cat=0&num=8', function(done) {
     t.run(function() {
-      // send GET to typeahead?term=xbo&cat=0&num=8
+      // send GET to typeahead?term=toy&cat=0&num=8
       var r = t.typeahead.GET({
         term: 'xbox',
         cat: 8,
