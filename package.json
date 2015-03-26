@@ -1,6 +1,6 @@
 {
   "name": "bluecat",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Generic REST API Test Framework",
   "repository": {
     "type" : "git",
