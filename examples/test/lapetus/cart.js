@@ -11,14 +11,6 @@ describe('Cart -> ', function() {
     lapetus.setProxy(Config.server.proxy);
   });
 
-  it('Create a new cart', function(done) {
-    lapetus.run(function() {
-      // create new cart
-      var r = lapetus.cart.POST({});
-      done();
-    });
-  });
-
   it('Create a new cart with location', function(done) {
     lapetus.run(function() {
       // create new cart
