@@ -1,9 +1,9 @@
 {
   "name": "bluecatExample",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Show case for Bluecat",
   "dependencies": {
-    "bluecat": "0.2.9",
+    "bluecat": "0.3.2",
     "chai": "~2.3.0",
     "config": "^1.13.0",
     "mocha": "~2.0.1"
