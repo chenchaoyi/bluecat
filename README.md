@@ -46,13 +46,13 @@ describe('typeahead service test suite', function() {
     t = new Bluecat.ServiceSync(Api, 'mobile.walmart.com');
   })
 
-  it('typeahead?term=toy&cat=0&num=8', function(done) {
+  it('GET typeahead?term=toy&cat=0&num=8', function(done) {
     t.run(function() {
       // send GET to typeahead?term=toy&cat=0&num=8
       var r = t.typeahead.GET({
-        term: 'xbox',
-        cat: 8,
-        num: 0
+        term: 'toy',
+        cat: 0,
+        num: 8
       });
 
       // verify response
