@@ -1,5 +1,5 @@
 {
-  "lapetus": {
+  "api": {
     "cart": {
       "schema": "https",
       "method": ["POST"],
@@ -21,30 +21,6 @@
         "clear": {
           "schema": "https",
           "method": ["DELETE"]
-        },
-        "items": {
-          "schema": "https",
-          "method": ["POST"],
-          "count": {
-            "schema": "https",
-            "method": ["GET"]
-          },
-          "${itemid}": {
-            "schema": "https",
-            "method": ["PUT", "PATCH", "DELETE"],
-            "transfer": {
-              "schema": "https",
-              "method": ["POST"]
-            },
-            "warranties": {
-              "schema": "https",
-              "method": ["POST"],
-              "transfer": {
-                "schema": "https",
-                "method": ["POST"]
-              }
-            }
-          }
         }
       }
     }
