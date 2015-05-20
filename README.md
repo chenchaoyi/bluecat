@@ -68,12 +68,82 @@ describe('typeahead service test suite', function() {
 ```
 
 ## Usage ##
-#### `setProxy(proxy)`
-#### `resetCookie()`
-#### `setHeaders(headers)`
-#### `setSessionRules(rules)`
-#### `rawRequest(options)`
+<!--Usage is a two steps process. First, define the API structure in config/api.json:-->
 
+#### `Bluecat.ServiceSync(api, host, options)`
+
+#### `setProxy(proxy)`
+Set proxy address, all the requests will be sent via a connection to the proxy server.
+```javascript
+var Bluecat = require('bluecat');
+var Api = Bluecat.Api('mobileapi');
+var service = new Bluecat.ServiceSync(Api, 'mobile.walmart.com');
+
+service.setProxy('http://127.0.0.1:8888')
+```
+
+#### `resetCookie()`
+Clean up cookie jar, so the next request won't set any cookies in the header.
+
+```javascript
+var Bluecat = require('bluecat');
+var Api = Bluecat.Api('mobileapi');
+var service = new Bluecat.ServiceSync(Api, 'mobile.walmart.com');
+
+service.v1.products.search.GET();
+service.resetCookie();
+service.v1.cart.POST({
+  body: {
+    location: '94066'
+  }
+})
+```
+
+#### `setHeaders(headers)`
+Set headers that will be set in all the requests.
+
+```javascript
+var Bluecat = require('bluecat');
+var Api = Bluecat.Api('mobileapi');
+var service = new Bluecat.ServiceSync(Api, 'mobile.walmart.com');
+
+service.setHeaders({'User-Agent': 'Automation'});
+```
+
+#### `setSessionRules(rules)`
+Set extra session rules other than cookie. Some RESTful APIs defines their own session rules, you can set it in the `Bluecat` framework so you don't have to deal with it in the actual test case.
+
+```javascript
+var Bluecat = require('bluecat');
+var Api = Bluecat.Api('mobileapi');
+var service = new Bluecat.ServiceSync(Api, 'mobile.walmart.com');
+
+// The following sessions rules start with 'start-auth-token-value' in the request header `AUTH_TOKEN`,
+// then grab new value from response header `REFRESH_AUTH_TOKEN` and put it in the next request header `AUTH_TOKEN`
+service.setSessionRules({
+  requestHeader: 'AUTH_TOKEN',
+  responseHeader: 'REFRESH_AUTH_TOKEN',
+  startSessionHeader: 'start-auth-token-value'
+});
+```
+
+#### `rawRequest(options)`
+Sometimes we just want to send a request to another host, which is different than the API host we are testing. You can use `rawRequest(options)` to fully to send it.
+
+```javascript
+var Bluecat = require('bluecat');
+var Api = Bluecat.Api('mobileapi');
+var service = new Bluecat.ServiceSync(Api, 'mobile.walmart.com');
+
+var r = lapetus.rawRequest({
+  method: 'GET',
+  json: true,
+  uri: 'https://thirdparty-host/creditcard/encryption.js',
+  headers: {'accept-encoding': 'gzip'},
+});
+expect(r.err).to.equal(null);
+expect(r.data.statusCode).to.equal(200);
+```
 
 
 ## License
