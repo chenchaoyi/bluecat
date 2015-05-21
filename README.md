@@ -6,7 +6,7 @@
 <!-- [![Gittip][gittip-image]][gittip-url] -->
 
 
-A REST API testing framework built on node.js that makes testing API endpoints straightforward.
+A REST API testing framework built on Node.js that makes testing API endpoints straightforward.
 
 * Define your APIs in a json file, `Bluecat` will create all the methods for you
 * Callbacks are removed so tests that have a complex API call flow will be more clear
@@ -18,6 +18,8 @@ A REST API testing framework built on node.js that makes testing API endpoints s
 ```bash
 $ npm install bluecat
 ```
+
+---
 
 ## Example ##
 * First define your API in config/api.json:
@@ -31,7 +33,6 @@ $ npm install bluecat
       }
   }
 }
-
 ```
 
 * Then in your test suite (example, using Mocha):
@@ -49,7 +50,7 @@ describe('typeahead service test suite', function() {
 
   it('GET typeahead?term=toy&cat=0&num=8', function(done) {
     t.run(function() {
-      // send GET to typeahead?term=toy&cat=0&num=8
+      // send GET to http://mobile.walmart.com/typeahead?term=toy&cat=0&num=8
       var r = t.typeahead.GET({
         term: 'toy',
         cat: 0,
@@ -64,8 +65,9 @@ describe('typeahead service test suite', function() {
     })
   })
 })
-
 ```
+
+---
 
 ## Usage ##
 <!--Usage is a two steps process. First, define the API structure in config/api.json:-->
@@ -145,6 +147,15 @@ expect(r.err).to.equal(null);
 expect(r.data.statusCode).to.equal(200);
 ```
 
+---
+
+## Logging
+
+* Launch the node process like `BLUECAT_DEBUG_FILE=/path/to/bluecat.log node script.js` to keep a log file of all the requests/responses information.
+
+* Launch the node process like `BLUECAT_DEBUG_CONSOLE=true node script.js` to see all the requests/responses information from your console (stdout).
+
+---
 
 ## License
 Licensed under the [MIT](http://opensource.org/licenses/MIT)
