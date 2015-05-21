@@ -14,6 +14,16 @@ A REST API testing framework built on Node.js that makes testing API endpoints s
 * Automatically maintains session cookies for you for HTTP API call flows
 * [Convenience methods](#usage) that helps to handle complex scenario
 
+## Table of contents
+
+- [Installation](#installation)
+- [Example](#example)
+- [Usage](#usage)
+- [Logging](#logging)
+- [License](#license)
+
+---
+
 ## Installation ##
 ```bash
 $ npm install bluecat
