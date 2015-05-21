@@ -1,22 +1,33 @@
 {
   "name": "bluecat",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Generic REST API Test Framework",
   "repository": {
-    "type" : "git",
-    "url"  : "https://github.com/chenchaoyi/bluecat"
+    "type": "git",
+    "url": "https://github.com/chenchaoyi/bluecat"
   },
   "engines": {
     "node": ">=0.10.21"
   },
-  "keywords": ["testing", "api", "REST", "bdd", "bluecat"],
+  "keywords": [
+    "testing",
+    "api",
+    "REST",
+    "bdd",
+    "bluecat"
+  ],
   "dependencies": {
-    "request": "2.55.0",
     "fibers": ">=1.0.5",
+    "hoek": "^2.13.0",
     "promise": ">=7.0.1",
-    "hoek": "^2.13.0"
+    "request": "2.55.0"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test/"
   },
   "devDependencies": {
+    "chai": "^2.3.0",
+    "mocha": "^2.2.5",
     "grunt-cli": "^0.1.13",
     "grunt": "^0.4.5",
     "grunt-contrib-jshint": "^0.11.2",

@@ -58,9 +58,9 @@ describe('typeahead service test suite', function() {
     t = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
   })
 
-  it('GET typeahead?term=toy&cat=0&num=8', function(done) {
+  it('GET typeahead?term=toy&cat=0&num=2', function(done) {
     t.run(function() {
-      // send GET to http://api.mobile.walmart.com/typeahead?term=toy&cat=0&num=8
+      // send GET to http://api.mobile.walmart.com/typeahead?term=toy&cat=0&num=2
       var r = t.typeahead.GET({
         query: {
           term: 'toy',
@@ -158,8 +158,9 @@ var Bluecat = require('bluecat');
 var Api = Bluecat.Api('mobileapi');
 var service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
 
-// The following sessions rules start with 'start-auth-token-value' in the request header `AUTH_TOKEN`,
-// then grab new value from response header `REFRESH_AUTH_TOKEN` and put it in the next request header `AUTH_TOKEN`
+// The following sessions rules start with 'start-auth-token-value' in the request header AUTH_TOKEN,
+// then grab new value from response header REFRESH_AUTH_TOKEN
+// and put it in the next request header AUTH_TOKEN
 service.setSessionRules({
   requestHeader: 'AUTH_TOKEN',
   responseHeader: 'REFRESH_AUTH_TOKEN',

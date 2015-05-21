@@ -1,0 +1,16 @@
+{
+  "mobileapi": {
+    "typeahead": {
+      "schema": "http",
+      "method": ["GET"]
+    },
+    "v1": {
+      "test1": {
+        "test2": {
+          "schema": "http",
+          "method": ["GET", "POST"]
+        }
+      }
+    }
+  }
+}
