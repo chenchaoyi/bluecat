@@ -55,16 +55,18 @@ var Api = Bluecat.Api('mobileapi');
 describe('typeahead service test suite', function() {
 
   before(function() {
-    t = new Bluecat.ServiceSync(Api, 'mobile.walmart.com');
+    t = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
   })
 
   it('GET typeahead?term=toy&cat=0&num=8', function(done) {
     t.run(function() {
-      // send GET to http://mobile.walmart.com/typeahead?term=toy&cat=0&num=8
+      // send GET to http://api.mobile.walmart.com/typeahead?term=toy&cat=0&num=8
       var r = t.typeahead.GET({
-        term: 'toy',
-        cat: 0,
-        num: 8
+        query: {
+          term: 'toy',
+          cat: 0,
+          num: 2
+        }
       });
 
       // verify response
@@ -83,13 +85,39 @@ describe('typeahead service test suite', function() {
 <!--Usage is a two steps process. First, define the API structure in config/api.json:-->
 
 #### `Bluecat.ServiceSync(api, host, options)`
+Create a new bluecat service object, with desired [options](https://github.com/request/request/blob/master/README.md#requestoptions-callback).
+```javascript
+var Bluecat = require('bluecat');
+var Api = Bluecat.Api('mobileapi');
+var service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com', {
+  gzip: true
+});
+```
+
+#### `rawRequest(options)`
+Sometimes we just want to send a request to some host, which is different than the API host we are testing. You can use `rawRequest(options)` to fully to send it.
+
+```javascript
+var Bluecat = require('bluecat');
+var Api = Bluecat.Api('mobileapi');
+var service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
+
+var r = lapetus.rawRequest({
+  method: 'GET',
+  json: true,
+  uri: 'https://thirdparty-host/creditcard/encryption.js',
+  headers: {'accept-encoding': 'gzip'},
+});
+expect(r.err).to.equal(null);
+expect(r.data.statusCode).to.equal(200);
+```
 
 #### `setProxy(proxy)`
 Set proxy address, all the requests will be sent via a connection to the proxy server.
 ```javascript
 var Bluecat = require('bluecat');
 var Api = Bluecat.Api('mobileapi');
-var service = new Bluecat.ServiceSync(Api, 'mobile.walmart.com');
+var service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
 
 service.setProxy('http://127.0.0.1:8888')
 ```
@@ -100,7 +128,7 @@ Clean up cookie jar, so the next request won't set any cookies in the header.
 ```javascript
 var Bluecat = require('bluecat');
 var Api = Bluecat.Api('mobileapi');
-var service = new Bluecat.ServiceSync(Api, 'mobile.walmart.com');
+var service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
 
 service.v1.products.search.GET();
 service.resetCookie();
@@ -117,7 +145,7 @@ Set headers that will be set in all the requests.
 ```javascript
 var Bluecat = require('bluecat');
 var Api = Bluecat.Api('mobileapi');
-var service = new Bluecat.ServiceSync(Api, 'mobile.walmart.com');
+var service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
 
 service.setHeaders({'User-Agent': 'Automation'});
 ```
@@ -128,7 +156,7 @@ Set extra session rules other than cookie. Some RESTful APIs defines their own s
 ```javascript
 var Bluecat = require('bluecat');
 var Api = Bluecat.Api('mobileapi');
-var service = new Bluecat.ServiceSync(Api, 'mobile.walmart.com');
+var service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
 
 // The following sessions rules start with 'start-auth-token-value' in the request header `AUTH_TOKEN`,
 // then grab new value from response header `REFRESH_AUTH_TOKEN` and put it in the next request header `AUTH_TOKEN`
@@ -137,24 +165,6 @@ service.setSessionRules({
   responseHeader: 'REFRESH_AUTH_TOKEN',
   startSessionHeader: 'start-auth-token-value'
 });
-```
-
-#### `rawRequest(options)`
-Sometimes we just want to send a request to another host, which is different than the API host we are testing. You can use `rawRequest(options)` to fully to send it.
-
-```javascript
-var Bluecat = require('bluecat');
-var Api = Bluecat.Api('mobileapi');
-var service = new Bluecat.ServiceSync(Api, 'mobile.walmart.com');
-
-var r = lapetus.rawRequest({
-  method: 'GET',
-  json: true,
-  uri: 'https://thirdparty-host/creditcard/encryption.js',
-  headers: {'accept-encoding': 'gzip'},
-});
-expect(r.err).to.equal(null);
-expect(r.data.statusCode).to.equal(200);
 ```
 
 ---
