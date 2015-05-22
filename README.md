@@ -1,6 +1,7 @@
 ## Bluecat
 
 [![NPM version][npm-image]][npm-url]
+[![Build Status](https://travis-ci.org/chenchaoyi/bluecat.svg?branch=master)](https://travis-ci.org/chenchaoyi/bluecat)
 [![Dependency Status][david-image]][david-url]
 [![Downloads][downloads-image]][downloads-url]
 <!-- [![Gittip][gittip-image]][gittip-url] -->
