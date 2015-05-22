@@ -1,4 +1,5 @@
-## Bluecat
+## Bluecat  <img src="https://raw.github.com/chenchaoyi/bluecat/master/images/bluecat.png" align="middle" />
+
 
 [![NPM version][npm-image]][npm-url]
 [![Build Status](https://travis-ci.org/chenchaoyi/bluecat.svg?branch=master)](https://travis-ci.org/chenchaoyi/bluecat)
