@@ -34,51 +34,52 @@ $ npm install bluecat
 ---
 
 ## Example ##
+#### Regular RESTful API
+```
+POST /checkout/contract
+GET  /checkout/contract
+```
+
 * First define your API in config/api.json:
 
 ```
 {
-  "mobileapi": {
-    "typeahead": {
+  "api": {
+    "checkout": {
       "schema": "http",
-      "method": ["GET"]
+      "method": ["GET", "POST"]
       }
   }
 }
 ```
 
-* Then in your test suite (example, using Mocha):
+* Then create a Bluecat service object and you are all set to send request and validate response:
 
 ```javascript
 var expect = require('chai').expect;
 var Bluecat = require('bluecat');
-var Api = Bluecat.Api('mobileapi');
+var Api = new Bluecat.ServiceSync(Bluecat.Api('api'), 'sample-host.com');
 
-describe('typeahead service test suite', function() {
-
-  before(function() {
-    t = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
-  })
-
-  it('GET typeahead?term=toy&cat=0&num=2', function(done) {
-    t.run(function() {
-      // send GET to http://api.mobile.walmart.com/typeahead?term=toy&cat=0&num=2
-      var r = t.typeahead.GET({
-        query: {
-          term: 'toy',
-          cat: 0,
-          num: 2
-        }
-      });
-
-      // verify response
-      expect(r.err).to.equal(null);
-      expect(r.data.statusCode).to.equal(200);
-      expect(r.data.body).to.have.ownProperty('specific');
-      done();
-    })
-  })
+// All requests need to be put into Api.run(), so they will run synchronously
+Api.run(function() {
+    // send POST http://sample-host.com/checkout/contract
+    var r = Api.checkout.contract.POST({
+      body: {
+        cartid: 'test-cart-id'
+      }
+    });
+    // verify response
+    expect(r.data.statusCode).to.equal(200);
+    expect(r.data.body).to.have.ownProperty('id');
+    
+    // send GET http://sample-host.com/checkout/contract
+    // session cookies are automatically maintained
+    r = Api.checkout.contract.GET();
+    // verify response
+    expect(r.data.statusCode).to.equal(200);
+    expect(r.data.body.cartId).to.eql('test-cart-id');
 })
+
 ```
 
 ---
