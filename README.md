@@ -53,17 +53,17 @@ GET  /checkout/contract
 }
 ```
 
-* Then create a Bluecat service object and you are all set to send request and validate response:
+* Then create a Bluecat service object. You are all set to send request and validate response:
 
 ```javascript
 var expect = require('chai').expect;
 var Bluecat = require('bluecat');
-var Api = new Bluecat.ServiceSync(Bluecat.Api('api'), 'sample-host.com');
+var Service = new Bluecat.ServiceSync(Bluecat.Api('api'), 'sample-host.com');
 
 // All requests need to be put into Api.run(), so they will run synchronously
-Api.run(function() {
+Service.run(function() {
     // send POST http://sample-host.com/checkout/contract
-    var r = Api.checkout.contract.POST({
+    var r = Service.checkout.contract.POST({
       body: {
         cartid: 'test-cart-id'
       }
@@ -71,10 +71,10 @@ Api.run(function() {
     // verify response
     expect(r.data.statusCode).to.equal(200);
     expect(r.data.body).to.have.ownProperty('id');
-    
+
     // send GET http://sample-host.com/checkout/contract
-    // session cookies are automatically maintained
-    r = Api.checkout.contract.GET();
+    // cookies are automatically maintained
+    r = Service.checkout.contract.GET();
     // verify response
     expect(r.data.statusCode).to.equal(200);
     expect(r.data.body.cartId).to.eql('test-cart-id');
@@ -92,7 +92,7 @@ Create a new bluecat service object, with desired [options](https://github.com/r
 ```javascript
 var Bluecat = require('bluecat');
 var Api = Bluecat.Api('mobileapi');
-var service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com', {
+var Service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com', {
   gzip: true
 });
 ```
@@ -103,9 +103,9 @@ Sometimes we just want to send a request to some host, which is different than t
 ```javascript
 var Bluecat = require('bluecat');
 var Api = Bluecat.Api('mobileapi');
-var service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
+var Service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
 
-var r = lapetus.rawRequest({
+var r = Service.rawRequest({
   method: 'GET',
   json: true,
   uri: 'https://thirdparty-host/creditcard/encryption.js',
@@ -120,9 +120,9 @@ Set proxy address, all the requests will be sent via a connection to the proxy s
 ```javascript
 var Bluecat = require('bluecat');
 var Api = Bluecat.Api('mobileapi');
-var service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
+var Service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
 
-service.setProxy('http://127.0.0.1:8888')
+Service.setProxy('http://127.0.0.1:8888')
 ```
 
 #### `resetCookie()`
@@ -131,11 +131,11 @@ Clean up cookie jar, so the next request won't set any cookies in the header.
 ```javascript
 var Bluecat = require('bluecat');
 var Api = Bluecat.Api('mobileapi');
-var service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
+var Service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
 
-service.v1.products.search.GET();
-service.resetCookie();
-service.v1.cart.POST({
+Service.v1.products.search.GET();
+Service.resetCookie();
+Service.v1.cart.POST({
   body: {
     location: '94066'
   }
@@ -148,9 +148,9 @@ Set headers that will be set in all the requests.
 ```javascript
 var Bluecat = require('bluecat');
 var Api = Bluecat.Api('mobileapi');
-var service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
+var Service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
 
-service.setHeaders({'User-Agent': 'Automation'});
+Service.setHeaders({'User-Agent': 'Automation'});
 ```
 
 #### `setSessionRules(rules)`
@@ -159,12 +159,12 @@ Set extra session rules other than cookie. Some RESTful APIs defines their own s
 ```javascript
 var Bluecat = require('bluecat');
 var Api = Bluecat.Api('mobileapi');
-var service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
+var Service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
 
 // The following sessions rules start with 'start-auth-token-value' in the request header AUTH_TOKEN,
 // then grab new value from response header REFRESH_AUTH_TOKEN
 // and put it in the next request header AUTH_TOKEN
-service.setSessionRules({
+Service.setSessionRules({
   requestHeader: 'AUTH_TOKEN',
   responseHeader: 'REFRESH_AUTH_TOKEN',
   startSessionHeader: 'start-auth-token-value'
