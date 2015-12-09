@@ -3,9 +3,9 @@
   "version": "0.0.4",
   "description": "Show case for Bluecat",
   "dependencies": {
-    "bluecat": "0.3.3",
+    "bluecat": "0.3.4",
     "chai": "~2.3.0",
-    "config": "^1.16.0",
-    "mocha": "^2.3.3"
+    "config": "^1.17.1",
+    "mocha": "^2.3.4"
   }
 }

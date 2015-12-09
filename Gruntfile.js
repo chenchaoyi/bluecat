@@ -13,8 +13,8 @@ module.exports = function(grunt) {
       },
       files: [
         '*.js',
-        'lib/**/*.js',
-        'test/**/*.js'
+        'lib/**',
+        'test/*.js'
       ]
     },
 
@@ -28,12 +28,13 @@ module.exports = function(grunt) {
         disallowMixedSpacesAndTabs: true,
         disallowNewlineBeforeBlockStatements: true,
         disallowKeywordsOnNewLine: ['else'],
+        requireSpaceAfterComma: {allExcept: ['trailing']},
         validateIndentation: 2
       },
       files: { src: [
         '*.js',
-        'lib/**/*.js',
-        'test/**/*.js'
+        'lib/**',
+        'test/*.js'
       ]}
     },
 
