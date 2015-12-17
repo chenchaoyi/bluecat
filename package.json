@@ -22,7 +22,7 @@
     "bluecat"
   ],
   "dependencies": {
-    "fibers": ">=1.0.7",
+    "fibers": "^1.0.8",
     "hoek": "^2.16.3",
     "inquirer": "^0.11.0",
     "path": "^0.12.7",
@@ -34,7 +34,7 @@
     "test": "./node_modules/.bin/mocha test/"
   },
   "devDependencies": {
-    "chai": "^2.3.0",
+    "chai": "^3.4.1",
     "mocha": "^2.3.4",
     "grunt-cli": "^0.1.13",
     "grunt": "^0.4.5",
