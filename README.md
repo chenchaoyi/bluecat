@@ -5,16 +5,17 @@
 [![Build Status](https://travis-ci.org/chenchaoyi/bluecat.svg?branch=master)](https://travis-ci.org/chenchaoyi/bluecat)
 [![Dependency Status][david-image]][david-url]
 [![Downloads][downloads-image]][downloads-url]
+[![Gitter](https://badges.gitter.im/chenchaoyi/bluecat.svg)](https://gitter.im/chenchaoyi/bluecat?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 <!-- [![Gittip][gittip-image]][gittip-url] -->
 
 
 A REST API testing framework built on Node.js that makes testing API endpoints straightforward.
 
 * Define your APIs in a json file, `Bluecat` will create all the methods for you
-* Callbacks are removed so tests that have a complex API call flow will be more clear
+* Callbacks are removed so complex requests flow is more clear
 * Full control over the request URL query, headers and body in test case
 * Automatically maintains session cookies for you for HTTP API call flows
-* [Convenience methods](#usage) that helps to handle complex scenario
+* [Convenience methods](#usage) that help to handle complex scenario
 
 ## Table of contents
 
