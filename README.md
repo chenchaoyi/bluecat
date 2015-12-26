@@ -47,9 +47,11 @@ GET  /checkout/contract
 {
   "api": {
     "checkout": {
-      "schema": "http",
-      "method": ["GET", "POST"]
+      "contract": {
+        "schema": "http",
+        "method": ["GET", "POST"]
       }
+    }
   }
 }
 ```
@@ -64,6 +66,7 @@ var Service = new Bluecat.ServiceSync(Bluecat.Api('api'), 'sample-host.com');
 // All requests need to be put into Api.run(), so they will run synchronously
 Service.run(function() {
     // send POST http://sample-host.com/checkout/contract
+    // with body: {"cartid": "test-cart-id"}
     var r = Service.checkout.contract.POST({
       body: {
         cartid: 'test-cart-id'
@@ -74,7 +77,7 @@ Service.run(function() {
     expect(r.data.body).to.have.ownProperty('id');
 
     // send GET http://sample-host.com/checkout/contract
-    // cookies are automatically maintained
+    // cookies are automatically maintained if there is any
     r = Service.checkout.contract.GET();
     // verify response
     expect(r.data.statusCode).to.equal(200);
@@ -82,6 +85,48 @@ Service.run(function() {
 })
 
 ```
+
+#### RESTful API with parameters in the URL
+```
+GET /checkout/${uuid}/contract
+```
+* First define your API in config/api.json:
+
+```
+{
+  "api": {
+    "checkout": {
+      "${uuid}": {
+        "contract": {
+          "schema": "http",
+          "method": ["GET"]
+        }
+      }
+    }
+  }
+}
+```
+
+* Then create a Bluecat service object. You are all set to send request and validate response:
+
+```javascript
+var expect = require('chai').expect;
+var Bluecat = require('bluecat');
+var Service = new Bluecat.ServiceSync(Bluecat.Api('api'), 'sample-host.com');
+
+// All requests need to be put into Api.run(), so they will run synchronously
+Service.run(function() {
+    // send GET http://sample-host.com/checkout/5e586387-6d5a-4874-8a98-5836bdc45c7b/contract
+    var r = Service.checkout['${uuid}'].contract.GET({
+      params: {
+        uuid: '5e586387-6d5a-4874-8a98-5836bdc45c7b'
+      }
+    });
+    // verify response
+    expect(r.data.statusCode).to.equal(200);
+})
+```
+
 
 ---
 
@@ -144,7 +189,7 @@ Service.v1.cart.POST({
 ```
 
 #### `setHeaders(headers)`
-Set headers that will be set in all the requests.
+Set headers that will be sent in all the requests.
 
 ```javascript
 var Bluecat = require('bluecat');
