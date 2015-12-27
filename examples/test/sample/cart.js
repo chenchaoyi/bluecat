@@ -5,35 +5,58 @@ var expect = require('chai').expect;
 var ServiceSync = require('bluecat').ServiceSync;
 var Api = require('bluecat').Api;
 
-describe('Cart -> ', function() {
+describe('Sample test -> ', function() {
   before(function() {
-    service = new ServiceSync(Api('api'), Config.server.host);
-    service.setProxy(Config.server.proxy);
+    service = new ServiceSync(Api('api'), 'httpbin.org');
+    // service.setProxy('http://127.0.0.1:8888');
   });
 
-  it('Get cart with valid cart id', function(done) {
+  it('POST request', function(done) {
     service.run(function() {
-      // create new cart
-      var r = service.cart.POST({
+      // send POST request to httpbin.org/post
+      var r = service.post.POST({
         body: {
           location: {
             postalCode: '94041'
           }
         }
       });
-      expect(r.data.statusCode).to.equal(201);
-      var cart_id = r.data.body.cart.id;
-
-      // get cart
-      r = service.cart['${cartid}'].GET({
-        params: {cartid: cart_id}
-      });
+      // verify response
       expect(r.data.statusCode).to.equal(200);
-      expect(r.data.body.cart.id).to.eql(cart_id);
-      expect(r.data.body.cart.type).to.eql('ANONYMOUS');
-      expect(r.data.body.cart.itemCount).to.equal(0);
-      expect(r.data.body.cart.totals).to.eql({});
-      expect(r.data.body.cart.currencyCode).to.be.a('string');
+      expect(r.data.body.json.location.postalCode).to.eql('94041');
+      expect(r.data.body.url).to.eql('http://httpbin.org/post');
+
+      done();
+    });
+  });
+
+  it('GET request', function(done) {
+    service.run(function() {
+      // send GET request to httpbin.org/get
+      var r = service.get.GET();
+      // verify response
+      expect(r.data.statusCode).to.equal(200);
+      expect(r.data.body.url).to.eql('http://httpbin.org/get');
+
+      done();
+    });
+  });
+
+  it('PATCH request', function(done) {
+    service.run(function() {
+      // send PATCH request to httpbin.org/patch
+      var r = service.patch.PATCH({
+        body: {
+          location: {
+            postalCode: '94041'
+          }
+        }
+      });
+      // verify response
+      expect(r.data.statusCode).to.equal(200);
+      expect(r.data.body.json.location.postalCode).to.eql('94041');
+      expect(r.data.body.url).to.eql('http://httpbin.org/patch');
+
       done();
     });
   });

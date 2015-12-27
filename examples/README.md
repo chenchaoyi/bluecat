@@ -1,5 +1,5 @@
 # Introduction ##
-#### Sample Web service tTest framework implementation based on Bluecat
+#### Sample Web service test framework implementation based on Bluecat
 
 ## Installation ##
 * Install [Node.js >= v0.10.25 and npm](http://nodejs.org/)

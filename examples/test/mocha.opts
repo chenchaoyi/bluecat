@@ -1,4 +1,0 @@
---slow 100
---timeout 200000
---ui bdd
---reporter dot
