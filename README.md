@@ -8,19 +8,19 @@
 [![Gitter](https://badges.gitter.im/chenchaoyi/bluecat.svg)](https://gitter.im/chenchaoyi/bluecat?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 <!-- [![Gittip][gittip-image]][gittip-url] -->
 
+Bluecat is a library that helps to easily create HTTP requests and maintain session information underlayer. It could be integrated with any Node.js test framework and assertion library to create a Web services testing framework that makes testing Web API endpoints straightforward.
 
-A REST API testing framework built on Node.js that makes testing API endpoints straightforward.
-
-* Define your APIs in a json file, `Bluecat` will create all the methods for you
+* Define your APIs in a JSON file, `Bluecat` automatically creates all the methods for you
 * Callbacks are removed so complex requests flow is more clear
-* Full control over the request URL query, headers and body in test case
-* Automatically maintains session cookies for you for HTTP API call flows
-* [Convenience methods](#usage) that help to handle complex scenario
+* Full control over the HTTP request URL query, headers and body
+* Automatically maintains session cookies information for HTTP API call flows
+* [Convenience methods](#usage) that help to handle more complex scenario
+* The `bluecat` command line interface comes with a nice configuration utility that helps you to create your test framework in less than a minute.
 
 ## Table of contents
 
 - [Installation](#installation)
-- [Example](#example)
+- [Examples](#example)
 - [Usage](#usage)
 - [Logging](#logging)
 - [License](#license)
@@ -63,7 +63,7 @@ var expect = require('chai').expect;
 var Bluecat = require('bluecat');
 var Service = new Bluecat.ServiceSync(Bluecat.Api('api'), 'sample-host.com');
 
-// All requests need to be put into Api.run(), so they will run synchronously
+// All requests need to be put as callback function in Service.run(), so they will run synchronously
 Service.run(function() {
     // send POST http://sample-host.com/checkout/contract
     // with body: {"cartid": "test-cart-id"}
@@ -114,7 +114,7 @@ var expect = require('chai').expect;
 var Bluecat = require('bluecat');
 var Service = new Bluecat.ServiceSync(Bluecat.Api('api'), 'sample-host.com');
 
-// All requests need to be put into Api.run(), so they will run synchronously
+// All requests need to be put as callback function in Service.run(), so they will run synchronously
 Service.run(function() {
     // send GET http://sample-host.com/checkout/5e586387-6d5a-4874-8a98-5836bdc45c7b/contract
     var r = Service.checkout['${uuid}'].contract.GET({
@@ -144,7 +144,7 @@ var Service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com', {
 ```
 
 #### `rawRequest(options)`
-Sometimes we just want to send a request to some host, which is different than the API host we are testing. You can use `rawRequest(options)` to fully to send it.
+Sometimes we just want to send a request to some host, which is different than the API host we gave to the bluecat service object. You can use `rawRequest(options)` to send it.
 
 ```javascript
 var Bluecat = require('bluecat');
@@ -200,14 +200,14 @@ Service.setHeaders({'User-Agent': 'Automation'});
 ```
 
 #### `setSessionRules(rules)`
-Set extra session rules other than cookie. Some RESTful APIs defines their own session rules, you can set it in the `Bluecat` framework so you don't have to deal with it in the actual test case.
+Set extra session rules other than cookie. Some RESTful APIs defines their own session rules, you can set such rule to the bluecat service object, so you don't have to deal with it before sending every single HTTP request.
 
 ```javascript
 var Bluecat = require('bluecat');
 var Api = Bluecat.Api('mobileapi');
 var Service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
 
-// The following sessions rules start with 'start-auth-token-value' in the request header AUTH_TOKEN,
+// The following sessions rules start with value 'start-auth-token-value' in the request header AUTH_TOKEN,
 // then grab new value from response header REFRESH_AUTH_TOKEN
 // and put it in the next request header AUTH_TOKEN
 Service.setSessionRules({
