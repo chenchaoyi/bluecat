@@ -11,7 +11,7 @@ And that's it, all setup is done.
 
 ## Usage ##
 
-* Run directly with [mocha](http://visionmedia.github.io/mocha/) (example):
+* Run directly with [mocha](http://visionmedia.github.io/mocha/):
 
 ```bash
 # Run all tests with default settings

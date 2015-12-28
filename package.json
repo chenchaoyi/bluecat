@@ -1,6 +1,6 @@
 {
   "name": "bluecat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "ccy <ccy.chenchaoyi@gmail.com>",
   "description": "Library for building HTTP requests, good for generic REST API Test Framework",
   "repository": {
