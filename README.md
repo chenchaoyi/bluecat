@@ -24,7 +24,7 @@ It could be integrated with any Node.js test framework and assertion library to 
 - [Installation](#installation)
 - [Examples](#example)
 - [Usage](#usage)
-- [Bluecat command line tool](#command-line-tool)
+- [Command line tool](#command-line-tool)
 - [Logging](#logging)
 - [License](#license)
 
