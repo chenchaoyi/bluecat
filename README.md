@@ -24,6 +24,7 @@ It could be integrated with any Node.js test framework and assertion library to 
 - [Installation](#installation)
 - [Examples](#example)
 - [Usage](#usage)
+- [Bluecat command line tool](#command-line-tool)
 - [Logging](#logging)
 - [License](#license)
 
@@ -218,6 +219,18 @@ Service.setSessionRules({
   startSessionHeader: 'start-auth-token-value'
 });
 ```
+
+---
+
+## Command line tool ##
+Bluecat comes with `bluecat` command line interface that helps you to create a basic Web services API test framework.
+
+```bash
+$ npm install bluecat
+$ ./node_modules/.bin/bluecat config
+```
+Follow the instructions and it will create a scaffold of basic web services API test framework for you.
+
 
 ---
 
