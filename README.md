@@ -89,7 +89,61 @@ Service.run(function() {
 
 ```
 
-#### Regular RESTful API with characters that cannot be used with [dot notation] (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors) in the URL
+#### Control query and/or headers in request
+```
+PUT /search/fitness/result?start=0&limit=50&error=true
+```
+
+* First define your API in config/api.json:
+
+```
+{
+  "api": {
+    "search": {
+      "fitness": {
+        "result": {
+          "schema": "https",
+          "method": ["PUT"]
+        }
+      }
+    }
+  }
+}
+```
+
+* Then create a Bluecat service object. You are all set to send request and validate response:
+
+```javascript
+var expect = require('chai').expect;
+var Bluecat = require('bluecat');
+var Service = new Bluecat.ServiceSync(Bluecat.Api('api'), 'sample-host.com');
+
+// All requests need to be put as callback function in Service.run(), so they will run synchronously
+Service.run(function() {
+    // send PUT http://sample-host.com/search/fitness/result?start=0&limit=50&error=true
+    // with body: {"term": "testTerm"}
+    // and header: {"User-agent": "automation"}
+    var r = Service.search.fitness.result.PUT({
+      body: {
+        term: 'testTerm'
+      },
+      query: {
+        start: 0,
+        limit: 50,
+        error: true
+      },
+      headers: {
+        'User-agent': 'automation'
+      }
+    });
+    // verify response
+    expect(r.data.statusCode).to.equal(200);
+})
+
+```
+
+
+#### RESTful API with characters that cannot be used with [dot notation] (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors) in the URL
 ```
 GET  /cart/v1/add-item/item
 ```
