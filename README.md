@@ -89,6 +89,49 @@ Service.run(function() {
 
 ```
 
+#### Regular RESTful API with characters that cannot be used with [dot notation] (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors) in the URL
+```
+GET  /cart/v1/add-item/item
+```
+
+* First define your API in config/api.json:
+
+```
+{
+  "api": {
+    "cart": {
+      "v1": {
+        "add-item": {
+          "item": {
+            "schema": "http",
+            "method": ["GET"]
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+* Then create a Bluecat service object and send request:
+
+```javascript
+var expect = require('chai').expect;
+var Bluecat = require('bluecat');
+var Service = new Bluecat.ServiceSync(Bluecat.Api('api'), 'sample-host.com');
+
+// All requests need to be put as callback function in Service.run(), so they will run synchronously
+Service.run(function() {
+    // send GET http://sample-host.com/cart/v1/add-item/item
+    // we cannot use 'r = Service.cart.v1.add-item.item.GET()' because 'add-item' cannot be used
+    // as dot notation property accessor, we need to use bracket notation in such case
+    r = Service.cart.v1['add-item'].item.GET();
+    // verify response
+    expect(r.data.statusCode).to.equal(200);
+})
+
+```
+
 #### RESTful API with parameters in the URL
 ```
 GET /checkout/${uuid}/contract
