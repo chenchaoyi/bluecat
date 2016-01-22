@@ -38,6 +38,7 @@ $ npm install bluecat
 ---
 
 ## Example ##
+
 #### Regular RESTful API
 ```
 POST /checkout/contract
@@ -226,6 +227,10 @@ Service.run(function() {
     expect(r.data.statusCode).to.equal(200);
 })
 ```
+
+#### Full example of test structure using Bluecat
+
+[Example](https://github.com/chenchaoyi/bluecat/tree/master/examples)
 
 
 ---
