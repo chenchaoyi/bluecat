@@ -17,3 +17,10 @@ And that's it, all setup is done.
 # Run all tests with default settings
 $ ./node_modules/.bin/mocha test/sample/
 ```
+
+* If you want to see the HTTP traffic, you can run through [Charles](https://www.charlesproxy.com/) proxy:
+
+```bash
+# Run all tests with default settings
+$ NODE_CONFIG='{"proxy": "http://127.0.0.1:8888"}' ./node_modules/.bin/mocha test/sample/
+```
