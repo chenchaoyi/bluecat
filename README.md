@@ -23,6 +23,12 @@ It could be integrated with any Node.js test framework and assertion library to 
 
 - [Installation](#installation)
 - [Examples](#example)
+  - [Regular RESTful API](#regular-restful-api)
+  - [Control query and/or headers in request](#control-query-andor-headers-in-request)
+  - [RESTful API with characters that cannot be used with dot notation in the URL](#restful-api-with-characters-that-cannot-be-used-with-dot-notation-in-the-url)
+  - [RESTful API with parameters in the URL](#restful-api-with-parameters-in-the-url)
+  - [Full example](#full-example-of-test-structure-using-bluecat)
+
 - [Usage](#usage)
 - [Command line tool](#command-line-tool)
 - [Logging](#logging)
