@@ -1,0 +1,7 @@
+{
+  "env": "production",
+  "proxy": null,
+  "server": {
+    "host": "httpbin.org"
+  }
+}

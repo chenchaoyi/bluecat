@@ -13,7 +13,8 @@ module.exports = function(grunt) {
       },
       files: [
         '*.js',
-        'lib/**',
+        'lib/*.js',
+        'lib/clt/*.js',
         'test/*.js'
       ]
     },
@@ -33,7 +34,8 @@ module.exports = function(grunt) {
       },
       files: { src: [
         '*.js',
-        'lib/**',
+        'lib/*.js',
+        'lib/clt/*.js',
         'test/*.js'
       ]}
     },

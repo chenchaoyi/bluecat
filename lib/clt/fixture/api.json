@@ -1,0 +1,16 @@
+{
+  "#<projectName>": {
+    "get": {
+      "schema": "http",
+      "method": [
+        "GET"
+      ]
+    },
+    "post": {
+      "schema": "http",
+      "method": [
+        "POST"
+      ]
+    }
+  }
+}

@@ -8,7 +8,7 @@
 [![Gitter](https://badges.gitter.im/chenchaoyi/bluecat.svg)](https://gitter.im/chenchaoyi/bluecat?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 <!-- [![Gittip][gittip-image]][gittip-url] -->
 
-`Bluecat` is a library that helps to easily create HTTP requests and maintain session information underlayer. 
+`Bluecat` is a library that helps to easily create HTTP requests and maintain session information underlayer.
 
 It could be integrated with any Node.js test framework and assertion library to create a clear and straighforward `Web services API testing framework`.
 
