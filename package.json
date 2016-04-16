@@ -1,6 +1,6 @@
 {
   "name": "bluecat",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "ccy <ccy.chenchaoyi@gmail.com>",
   "description": "Library for building HTTP requests, good for generic REST API Test Framework",
   "repository": {
@@ -28,7 +28,7 @@
     "path": "^0.12.7",
     "promise": "^7.1.1",
     "request": "2.69.0",
-    "yargs": "^4.3.2"
+    "yargs": "^4.6.0"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha test/"
@@ -36,8 +36,8 @@
   "devDependencies": {
     "chai": "^3.4.1",
     "mocha": "^2.3.4",
-    "grunt-cli": "^0.1.13",
-    "grunt": "^0.4.5",
+    "grunt-cli": "^1.2.0",
+    "grunt": "^1.0.1",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-jscs": "^2.8.0"
   }
