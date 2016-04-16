@@ -327,6 +327,18 @@ Service.setSessionRules({
 });
 ```
 
+#### `sleep(ms)`
+Sleep for `ms` milliseconds.
+
+```javascript
+var Bluecat = require('bluecat');
+var Api = Bluecat.Api('mobileapi');
+var Service = new Bluecat.ServiceSync(Api, 'api.mobile.walmart.com');
+// Sleep for 5 seconds
+Service.sleep(5000);
+```
+
+
 ---
 
 ## Command line tool ##
