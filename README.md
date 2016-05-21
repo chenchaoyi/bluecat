@@ -348,7 +348,7 @@ Bluecat comes with `bluecat` command line interface that helps you to create a b
 $ npm install bluecat
 $ ./node_modules/.bin/bluecat config
 ```
-Follow the instructions and it will create a scaffold of basic web services API test framework for you.
+Follow the instructions and it will create a scaffold of a basic web services API test framework for you.
 
 
 ---
