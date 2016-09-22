@@ -5,7 +5,7 @@
   "dependencies": {
     "bluecat": "1.0.8",
     "chai": "^3.5.0",
-    "config": "^1.20.1",
-    "mocha": "^2.4.5"
+    "config": "^1.21.0",
+    "mocha": "^3.0.2"
   }
 }
