@@ -10,9 +10,9 @@
 
 **Bluecat** is a library that helps to easily create HTTP requests and maintain session information underlayer.
 
-It could be integrated with any Node.js test framework and assertion library to create a clear and straighforward `Web services API testing framework`.
+It could be integrated with any Node.js test framework and assertion library to create a clear and straighforward **Web services API testing framework**.
 
-* Define your APIs in a JSON file, `Bluecat` automatically creates all the methods for you
+* Define your APIs in a JSON file, **Bluecat** automatically creates all the methods for you
 * Callbacks are removed so complex requests flow is more clear
 * Full control over the HTTP request URL query, headers and body
 * Automatically maintains session cookies information for HTTP API call flows
