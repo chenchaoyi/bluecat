@@ -1,6 +1,6 @@
 {
   "name": "bluecat",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "author": "Chaoyi Chen <ccy.chenchaoyi@gmail.com>",
   "description": "Library for building RESTful API HTTP requests, good for generic RESTful API Test Framework",
   "repository": {
@@ -22,9 +22,9 @@
     "bluecat"
   ],
   "dependencies": {
-    "fibers": "^1.0.13",
+    "fibers": "^1.0.14",
     "hoek": "^2.16.3",
-    "inquirer": "^1.0.2",
+    "inquirer": "^1.1.3",
     "path": "^0.12.7",
     "promise": "^7.1.1",
     "request": "2.72.0",
@@ -35,10 +35,10 @@
   },
   "devDependencies": {
     "chai": "^3.4.1",
-    "mocha": "^2.3.4",
+    "mocha": "^2.5.3",
     "grunt-cli": "^1.2.0",
     "grunt": "^1.0.1",
     "grunt-contrib-jshint": "^1.0.0",
-    "grunt-jscs": "^2.8.0"
+    "grunt-jscs": "^3.0.1"
   }
 }
