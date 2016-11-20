@@ -342,7 +342,9 @@ Service.sleep(5000);
 ---
 
 ## Command line tool ##
-Bluecat comes with `bluecat` command line interface that helps you to create a basic Web services API test framework.
+Bluecat comes with `bluecat` command line interface that helps you to create a basic Web services API test framework and check defined APIs.
+
+#### Create basic Web services API test structure:
 
 ```bash
 $ npm install bluecat
@@ -350,6 +352,12 @@ $ ./node_modules/.bin/bluecat config
 ```
 Follow the instructions and it will create a scaffold of a basic web services API test framework for you.
 
+#### Check currently defined Web services APIs:
+
+```bash
+$ ./node_modules/.bin/bluecat api
+```
+It will print out all the current defined Web services APIs that could be called from test case.
 
 ---
 
