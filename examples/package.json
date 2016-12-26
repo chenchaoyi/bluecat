@@ -1,11 +1,13 @@
 {
   "name": "bluecatExample",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Show case for Bluecat",
   "dependencies": {
-    "bluecat": "1.1.0",
+    "bluecat": "1.1.1",
     "chai": "^3.5.0",
     "config": "^1.21.0",
-    "mocha": "^3.1.2"
+    "mocha": "3.2.0",
+    "testarmada-magellan": "^8.8.4",
+    "testarmada-magellan-mocha-plugin2": "^6.0.2"
   }
 }

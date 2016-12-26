@@ -18,9 +18,16 @@ And that's it, all setup is done.
 $ ./node_modules/.bin/mocha test/sample/
 ```
 
-* If you want to see the HTTP traffic, you can run through [Charles](https://www.charlesproxy.com/) proxy:
+* If you want to inspect the HTTP traffic, you can run through [Charles](https://www.charlesproxy.com/) proxy:
 
 ```bash
 # Run all tests with proxy so you can inspect all the traffic
 $ NODE_CONFIG='{"proxy": "http://127.0.0.1:8888"}' ./node_modules/.bin/mocha test/sample/
 ```
+
+* Run in parallel with [Magellan](https://github.com/TestArmada/magellan):
+
+```bash
+$ ./node_modules/.bin/magellan
+```
+
