@@ -8,6 +8,6 @@
     "config": "^1.21.0",
     "mocha": "3.2.0",
     "testarmada-magellan": "^8.8.4",
-    "testarmada-magellan-mocha-plugin": "https://github.com/chenchaoyi/magellan-mocha-plugin/tarball/master"
+    "testarmada-magellan-mocha-plugin2": "^6.0.2"
   }
 }

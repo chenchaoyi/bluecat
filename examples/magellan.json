@@ -3,5 +3,5 @@
     "test/sample"
   ],
   "mocha_opts": "test/mocha.opts",
-  "framework": "testarmada-magellan-mocha-plugin"
+  "framework": "testarmada-magellan-mocha-plugin2"
 }
