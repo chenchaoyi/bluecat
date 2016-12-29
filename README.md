@@ -50,7 +50,7 @@ POST /checkout/contract
 GET  /checkout/contract
 ```
 
-* First define your API in config/api.json:
+* First define your API in config/api.json, following the exact URL path structure:
 
 ```
 {
@@ -220,7 +220,7 @@ var expect = require('chai').expect;
 var Bluecat = require('bluecat');
 var Service = new Bluecat.ServiceSync(Bluecat.Api('api'), 'sample-host.com');
 
-// All requests need to be put as callback function in Service.run(), so they will run synchronously
+// All requests are needed to be put as callback function in Service.run(), so they will run synchronously
 Service.run(function() {
     // send GET http://sample-host.com/checkout/5e586387-6d5a-4874-8a98-5836bdc45c7b/contract
     var r = Service.checkout['${uuid}'].contract.GET({
@@ -310,7 +310,7 @@ Service.setHeaders({'User-Agent': 'Automation'});
 ```
 
 #### `setSessionRules(rules)`
-Set extra session rules other than cookie. Some RESTful APIs defines their own session rules, you can set such rule to the bluecat service object, so you don't have to deal with it before sending every single HTTP request.
+Set extra session rules other than cookie. Some RESTful APIs defines their own session rules, you can set such rules to the bluecat service object, so you don't have to deal with it before sending every single HTTP request.
 
 ```javascript
 var Bluecat = require('bluecat');
