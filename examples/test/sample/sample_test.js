@@ -8,10 +8,10 @@ var Api = require('bluecat').Api;
 describe('Sample test -> ', function() {
   before(function() {
     service = new ServiceSync(Api('api'), 'httpbin.org');
-    // service.setProxy('http://127.0.0.1:8888');
+    service.setProxy(Config.proxy);
   });
 
-  it('POST request', function(done) {
+  it('/post', function(done) {
     service.run(function() {
       // send POST request to httpbin.org/post
       var r = service.post.POST({
@@ -24,25 +24,25 @@ describe('Sample test -> ', function() {
       // verify response
       expect(r.data.statusCode).to.equal(200);
       expect(r.data.body.json.location.postalCode).to.eql('94041');
-      expect(r.data.body.url).to.eql('http://httpbin.org/post');
+      expect(r.data.body.url).to.eql(r.request.uri);
 
       done();
     });
   });
 
-  it('GET request', function(done) {
+  it('/get', function(done) {
     service.run(function() {
       // send GET request to httpbin.org/get
       var r = service.get.GET();
       // verify response
       expect(r.data.statusCode).to.equal(200);
-      expect(r.data.body.url).to.eql('http://httpbin.org/get');
+      expect(r.data.body.url).to.eql(r.request.uri);
 
       done();
     });
   });
 
-  it('PATCH request', function(done) {
+  it('/patch', function(done) {
     service.run(function() {
       // send PATCH request to httpbin.org/patch
       var r = service.patch.PATCH({
@@ -55,7 +55,62 @@ describe('Sample test -> ', function() {
       // verify response
       expect(r.data.statusCode).to.equal(200);
       expect(r.data.body.json.location.postalCode).to.eql('94041');
-      expect(r.data.body.url).to.eql('http://httpbin.org/patch');
+      expect(r.data.body.url).to.eql(r.request.uri);
+
+      done();
+    });
+  });
+
+  it('/put', function(done) {
+    service.run(function() {
+      // send PUT request to httpbin.org/put
+      var r = service.put.PUT({
+        body: {
+          location: {
+            postalCode: '94041'
+          }
+        }
+      });
+      // verify response
+      expect(r.data.statusCode).to.equal(200);
+      expect(r.data.body.json.location.postalCode).to.eql('94041');
+      expect(r.data.body.url).to.eql(r.request.uri);
+
+      done();
+    });
+  });
+
+  it('/ip', function(done) {
+    service.run(function() {
+      // send GET request to httpbin.org/ip
+      var r = service.ip.GET();
+      // verify response
+      expect(r.data.statusCode).to.equal(200);
+      expect(r.data.body.origin).to.be.defined;
+
+      done();
+    });
+  });
+
+  it('/user-agent', function(done) {
+    service.run(function() {
+      // send GET request to httpbin.org/user-agent
+      var r = service['user-agent'].GET();
+      // verify response
+      expect(r.data.statusCode).to.equal(200);
+      expect(r.data.body.origin).to.be.defined;
+
+      done();
+    });
+  });
+
+  it('/headers', function(done) {
+    service.run(function() {
+      // send GET request to httpbin.org/headers
+      var r = service.headers.GET();
+      // verify response
+      expect(r.data.statusCode).to.equal(200);
+      expect(r.data.body.headers).to.be.a('object')
 
       done();
     });

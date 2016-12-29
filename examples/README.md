@@ -29,5 +29,6 @@ $ NODE_CONFIG='{"proxy": "http://127.0.0.1:8888"}' ./node_modules/.bin/mocha tes
 
 ```bash
 $ ./node_modules/.bin/magellan
+$ ./node_modules/.bin/magellan --max_workers=10
 ```
 
