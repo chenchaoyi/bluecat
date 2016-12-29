@@ -1,0 +1,6 @@
+{
+  "mocha_tests": [
+    "test/#<projectName>"
+  ],
+  "framework": "testarmada-magellan-mocha-plugin2"
+}
