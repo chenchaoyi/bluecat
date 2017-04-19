@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/chenchaoyi/bluecat.svg?branch=master)](https://travis-ci.org/chenchaoyi/bluecat)
 [![Dependency Status][david-image]][david-url]
 [![Downloads][downloads-image]][downloads-url]
-[![Gitter](https://badges.gitter.im/chenchaoyi/bluecat.svg)](https://gitter.im/chenchaoyi/bluecat?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+<!-- [![Gitter](https://badges.gitter.im/chenchaoyi/bluecat.svg)](https://gitter.im/chenchaoyi/bluecat?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
 <!-- [![Gittip][gittip-image]][gittip-url] -->
 
 **Bluecat** is a library that helps to easily create HTTP requests and maintain session information underlayer.
