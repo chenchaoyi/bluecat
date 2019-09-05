@@ -384,3 +384,4 @@ Licensed under the [MIT](http://opensource.org/licenses/MIT)
 [downloads-url]: https://npmjs.org/package/bluecat
 [gittip-image]: https://img.shields.io/gittip/chenchaoyi.svg?style=flat-square
 [gittip-url]: https://www.gittip.com/chenchaoyi/
+
