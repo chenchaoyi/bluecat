@@ -1,6 +1,6 @@
 {
   "name": "bluecat",
-  "version": "1.1.7",
+  "version": "2.0.0",
   "author": "Chaoyi Chen <ccy.chenchaoyi@gmail.com>",
   "description": "Library for building RESTful API HTTP requests, best for generic RESTful API Test Framework",
   "repository": {
@@ -8,38 +8,46 @@
     "url": "https://github.com/chenchaoyi/bluecat"
   },
   "license": "MIT",
+  "main": "index.js",
+  "types": "index.d.ts",
   "bin": {
     "bluecat": "./bin/bluecat.bin.js"
   },
   "engines": {
-    "node": ">=0.10.21"
+    "node": ">=18"
   },
   "keywords": [
     "testing",
     "api",
     "REST",
+    "openapi",
+    "swagger",
     "bdd",
     "bluecat"
   ],
+  "files": [
+    "bin",
+    "lib",
+    "index.js",
+    "index.d.ts",
+    "LICENSE",
+    "README.md"
+  ],
   "dependencies": {
-    "columnify": "^1.5.4",
-    "fibers": "^4.0.1",
-    "hoek": "^2.16.3",
-    "inquirer": "^3.1.1",
-    "path": "^0.12.7",
-    "promise": "^7.1.1",
-    "request": "2.81.0",
-    "yargs": "^8.0.2"
+    "columnify": "^1.6.0",
+    "inquirer": "^9.3.7",
+    "tough-cookie": "^5.0.0",
+    "undici": "^6.21.0",
+    "yargs": "^17.7.2"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha test/"
+    "test": "mocha test/",
+    "lint": "eslint lib test"
   },
   "devDependencies": {
-    "chai": "^4.0.2",
-    "mocha": "^3.2.0",
-    "grunt-cli": "^1.2.0",
-    "grunt": "^1.0.1",
-    "grunt-contrib-jshint": "^2.1.0",
-    "grunt-jscs": "^3.0.1"
+    "@eslint/js": "^9.39.4",
+    "chai": "^4.5.0",
+    "eslint": "^9.18.0",
+    "mocha": "^10.8.2"
   }
 }

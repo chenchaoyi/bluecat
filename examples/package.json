@@ -1,13 +1,15 @@
 {
   "name": "bluecatExample",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Show case for Bluecat",
+  "scripts": {
+    "test": "mocha test/sample",
+    "test:parallel": "mocha --parallel test/sample"
+  },
   "dependencies": {
-    "bluecat": "1.1.6",
-    "chai": "^4.0.2",
-    "config": "^1.25.1",
-    "mocha": "3.2.0",
-    "testarmada-magellan": "^8.8.6",
-    "testarmada-magellan-mocha-plugin2": "^6.0.2"
+    "bluecat": "^2.0.0",
+    "chai": "^4.5.0",
+    "config": "^3.3.12",
+    "mocha": "^10.8.2"
   }
 }
