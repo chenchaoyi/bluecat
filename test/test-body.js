@@ -46,6 +46,7 @@ describe('sample tests (smoke)', function() {
   });
 
   after(function(done) {
+    s.closeAllConnections();
     s.close(done);
   });
 

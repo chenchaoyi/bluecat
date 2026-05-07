@@ -74,7 +74,10 @@ describe('OpenAPI 3 -> Bluecat tree', function() {
       });
       server.listen(7070, done);
     });
-    after(function(done) { server.close(done); });
+    after(function(done) {
+      server.closeAllConnections();
+      server.close(done);
+    });
 
     it('substitutes {id} path params at request time', async function() {
       const tree = fromOpenAPI({

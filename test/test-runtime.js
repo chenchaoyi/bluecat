@@ -50,7 +50,10 @@ describe('Service runtime behavior', function() {
     server.listen(6868, done);
   });
 
-  after(function(done) { server.close(done); });
+  after(function(done) {
+    server.closeAllConnections();
+    server.close(done);
+  });
 
   beforeEach(function() { lastReq = null; });
 
