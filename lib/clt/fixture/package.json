@@ -1,6 +1,9 @@
 {
   "name": "#<projectName>",
   "version": "0.0.1",
-  "dependencies": {
-  }
+  "scripts": {
+    "test": "mocha test/",
+    "test:parallel": "mocha --parallel test/"
+  },
+  "dependencies": {}
 }

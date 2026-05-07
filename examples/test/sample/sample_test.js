@@ -1,120 +1,63 @@
-// Sample test suite showing bluecat framework
+// Sample test suite showing bluecat framework (v2)
 
-var Config = require('config');
-var expect = require('chai').expect;
-var ServiceSync = require('bluecat').ServiceSync;
-var Api = require('bluecat').Api;
+const Config = require('config');
+const expect = require('chai').expect;
+const Bluecat = require('bluecat');
+
+let service;
 
 describe('Sample test -> ', function() {
   before(function() {
-    service = new ServiceSync(Api('api'), 'httpbin.org');
-    service.setProxy(Config.proxy);
-  });
-
-  it('/post', function(done) {
-    service.run(function() {
-      // send POST request to httpbin.org/post
-      var r = service.post.POST({
-        body: {
-          location: {
-            postalCode: '94041'
-          }
-        }
-      });
-      // verify response
-      expect(r.data.statusCode).to.equal(200);
-      expect(r.data.body.json.location.postalCode).to.eql('94041');
-      expect(r.data.body.url).to.eql(r.request.uri);
-
-      done();
+    service = new Bluecat.Service(Bluecat.Api('api'), 'httpbin.org', {
+      proxy: Config.proxy
     });
   });
 
-  it('/get', function(done) {
-    service.run(function() {
-      // send GET request to httpbin.org/get
-      var r = service.get.GET();
-      // verify response
-      expect(r.data.statusCode).to.equal(200);
-      expect(r.data.body.url).to.eql(r.request.uri);
-
-      done();
+  it('/post', async function() {
+    const r = await service.post.POST({
+      body: { location: { postalCode: '94041' } }
     });
+    expect(r.data.statusCode).to.equal(200);
+    expect(r.data.body.json.location.postalCode).to.eql('94041');
+    expect(r.data.body.url).to.eql(r.request.uri);
   });
 
-  it('/patch', function(done) {
-    service.run(function() {
-      // send PATCH request to httpbin.org/patch
-      var r = service.patch.PATCH({
-        body: {
-          location: {
-            postalCode: '94041'
-          }
-        }
-      });
-      // verify response
-      expect(r.data.statusCode).to.equal(200);
-      expect(r.data.body.json.location.postalCode).to.eql('94041');
-      expect(r.data.body.url).to.eql(r.request.uri);
-
-      done();
-    });
+  it('/get', async function() {
+    const r = await service.get.GET();
+    expect(r.data.statusCode).to.equal(200);
+    expect(r.data.body.url).to.eql(r.request.uri);
   });
 
-  it('/put', function(done) {
-    service.run(function() {
-      // send PUT request to httpbin.org/put
-      var r = service.put.PUT({
-        body: {
-          location: {
-            postalCode: '94041'
-          }
-        }
-      });
-      // verify response
-      expect(r.data.statusCode).to.equal(200);
-      expect(r.data.body.json.location.postalCode).to.eql('94041');
-      expect(r.data.body.url).to.eql(r.request.uri);
-
-      done();
+  it('/patch', async function() {
+    const r = await service.patch.PATCH({
+      body: { location: { postalCode: '94041' } }
     });
+    expect(r.data.statusCode).to.equal(200);
+    expect(r.data.body.json.location.postalCode).to.eql('94041');
   });
 
-  it('/ip', function(done) {
-    service.run(function() {
-      // send GET request to httpbin.org/ip
-      var r = service.ip.GET();
-      // verify response
-      expect(r.data.statusCode).to.equal(200);
-      expect(r.data.body.origin).to.be.defined;
-
-      done();
+  it('/put', async function() {
+    const r = await service.put.PUT({
+      body: { location: { postalCode: '94041' } }
     });
+    expect(r.data.statusCode).to.equal(200);
+    expect(r.data.body.json.location.postalCode).to.eql('94041');
   });
 
-  it('/user-agent', function(done) {
-    service.run(function() {
-      // send GET request to httpbin.org/user-agent
-      var r = service['user-agent'].GET();
-      // verify response
-      expect(r.data.statusCode).to.equal(200);
-      expect(r.data.body.origin).to.be.defined;
-
-      done();
-    });
+  it('/ip', async function() {
+    const r = await service.ip.GET();
+    expect(r.data.statusCode).to.equal(200);
+    expect(r.data.body.origin).to.exist;
   });
 
-  it('/headers', function(done) {
-    service.run(function() {
-      // send GET request to httpbin.org/headers
-      var r = service.headers.GET();
-      // verify response
-      expect(r.data.statusCode).to.equal(200);
-      expect(r.data.body.headers).to.be.a('object')
-
-      done();
-    });
+  it('/user-agent', async function() {
+    const r = await service['user-agent'].GET();
+    expect(r.data.statusCode).to.equal(200);
   });
 
+  it('/headers', async function() {
+    const r = await service.headers.GET();
+    expect(r.data.statusCode).to.equal(200);
+    expect(r.data.body.headers).to.be.a('object');
+  });
 });
-

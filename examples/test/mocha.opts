@@ -1,4 +1,0 @@
---slow 10000
---ui bdd
---reporter spec
---timeout 0

@@ -10,7 +10,29 @@
           "schema": "http",
           "method": ["GET", "POST"]
         }
+      },
+      "users": {
+        "${id}": {
+          "schema": "http",
+          "method": ["GET", "PUT", "DELETE"]
+        }
       }
+    },
+    "cookie": {
+      "schema": "http",
+      "method": ["GET"]
+    },
+    "echo": {
+      "schema": "http",
+      "method": ["GET"]
+    },
+    "error": {
+      "schema": "http",
+      "method": ["GET"]
+    },
+    "session-token": {
+      "schema": "http",
+      "method": ["GET"]
     }
   }
 }
